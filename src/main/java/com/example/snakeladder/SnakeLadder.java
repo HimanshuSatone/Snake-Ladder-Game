@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
@@ -16,6 +17,11 @@ public class SnakeLadder extends Application {
 
     public static final int tileSize = 40, height=10,width=10;
     int lowerLine = tileSize*height;
+
+    //Two players to play the game
+    Player firstPlayer = new Player(tileSize-15, Color.BLACK,"Himanshu");
+    Player secondPlayer = new Player(tileSize-22, Color.RED,"Sneha");
+
 
     //Setting tiles on the Pane to make a playing board
     Pane createContent() throws FileNotFoundException {
@@ -30,15 +36,15 @@ public class SnakeLadder extends Application {
                 root.getChildren().add(tile);
             }
         }
-//        root.getChildren().add(new Tile(tileSize));
 
         //Setting image url to the pane with respective sizes
-        Image img = new Image(new FileInputStream("C:\\Users\\Himanshu\\IdeaProjects\\SnakeLadder\\src\\main\\java\\com\\example\\snakeladder\\SnakeAndLadder.jpg"));
+        Image img = new Image(new FileInputStream("C:\\Users\\Himanshu\\IdeaProjects\\SnakeLadder\\src\\main\\java\\com\\example\\snakeladder\\SandL.jpg"));
         ImageView boardImage = new ImageView();
         boardImage.setImage(img);
         boardImage.setFitWidth(tileSize*width);
         boardImage.setFitHeight(tileSize*height);
 
+        //Setting buttons for both the players in the pane 
         Button  playerOneButton = new Button("Player One");
         playerOneButton.setTranslateX(20);
         playerOneButton.setTranslateY(lowerLine+20);
@@ -46,7 +52,7 @@ public class SnakeLadder extends Application {
         playerTwoButton.setTranslateX(250);
         playerTwoButton.setTranslateY(lowerLine+20);
 
-        root.getChildren().addAll(boardImage,playerOneButton, playerTwoButton);
+        root.getChildren().addAll(boardImage,playerOneButton, playerTwoButton, firstPlayer.getCoin(), secondPlayer.getCoin());
         return root;
     }
     @Override
