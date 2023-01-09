@@ -19,8 +19,8 @@ public class SnakeLadder extends Application {
     int lowerLine = tileSize*height;
 
     //Two players to play the game
-    Player firstPlayer = new Player(tileSize-15, Color.BLACK,"Himanshu");
-    Player secondPlayer = new Player(tileSize-22, Color.RED,"Sneha");
+    Player firstPlayer = new Player(tileSize, Color.BLACK,"Himanshu");
+    Player secondPlayer = new Player(tileSize-10, Color.RED,"Sneha");
 
 
     //Setting tiles on the Pane to make a playing board
@@ -44,7 +44,7 @@ public class SnakeLadder extends Application {
         boardImage.setFitWidth(tileSize*width);
         boardImage.setFitHeight(tileSize*height);
 
-        //Setting buttons for both the players in the pane 
+        //Setting buttons for both the players in the pane
         Button  playerOneButton = new Button("Player One");
         playerOneButton.setTranslateX(20);
         playerOneButton.setTranslateY(lowerLine+20);
