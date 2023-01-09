@@ -44,13 +44,4 @@ public class Board {
 
         return positionCoordinates.get(position).getValue();
     }
-
-//    public static void main(String[] args) {
-//        Board board= new Board();
-//        board.populatePositionCoordinates();
-//        for(int i=0;i<board.positionCoordinates.size();i++){
-//            System.out.println(i + " #x: " + board.positionCoordinates.get(i).getKey()+
-//                    " #y: " +board.positionCoordinates.get(i).getValue() );
-//        }
-//    }
 }
