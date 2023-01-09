@@ -6,10 +6,12 @@ import java.util.ArrayList;
 public class Board {
 
     ArrayList<Pair<Integer, Integer>> positionCoordinates;
+    private ArrayList<Integer> snakeLadderPosition;
 
     public Board(){
 
         populatePositionCoordinates();
+        populateSnakeLadderPosition();
     }
 
     private void populatePositionCoordinates(){
@@ -36,6 +38,27 @@ public class Board {
         }
     }
 
+    private void populateSnakeLadderPosition(){
+
+        snakeLadderPosition = new ArrayList<>();
+        for(int i=0;i<101;i++){
+            snakeLadderPosition.add(i);
+        }
+        snakeLadderPosition.set(4,25);
+        snakeLadderPosition.set(21,39);
+        snakeLadderPosition.set(29,74);
+        snakeLadderPosition.set(43,76);
+        snakeLadderPosition.set(63,80);
+        snakeLadderPosition.set(71,89);
+        snakeLadderPosition.set(47,15);
+        snakeLadderPosition.set(30,7);
+        snakeLadderPosition.set(56,19);
+        snakeLadderPosition.set(82,42);
+        snakeLadderPosition.set(98,55);
+        snakeLadderPosition.set(92,75);
+        snakeLadderPosition.set(73,51);
+    }
+
     public int getXCoordinate(int position){
 
         return positionCoordinates.get(position).getKey();
@@ -43,5 +66,13 @@ public class Board {
     public int getYCoordinate(int position){
 
         return positionCoordinates.get(position).getValue();
+    }
+
+    public int getNextPosition(int position){
+
+        if(position>=1 && position<=100)
+            return snakeLadderPosition.get(position);
+
+        else return -1;
     }
 }

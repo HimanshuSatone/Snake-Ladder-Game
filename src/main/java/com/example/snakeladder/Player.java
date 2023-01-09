@@ -31,6 +31,12 @@ public class Player {
 //        coin.setTranslateX(gameBoard.getXCoordinate(coinPosition));
 //        coin.setTranslateY(gameBoard.getYCoordinate(coinPosition));
         translatePlayer();
+
+        int newPosition = gameBoard.getNextPosition(coinPosition);
+        if(newPosition != coinPosition){
+            coinPosition = newPosition;
+            translatePlayer();
+        }
     }
 
     public void translatePlayer(){
