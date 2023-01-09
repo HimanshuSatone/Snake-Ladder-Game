@@ -22,6 +22,7 @@ public class SnakeLadder extends Application {
     int lowerLine = tileSize*height;
     public int diceValue;
     Label rolledDiceValueLabel;
+    Button startGameButton;
 
     //Two players to play the game
     Player firstPlayer = new Player(tileSize-15, Color.BLACK,"Himanshu");
@@ -31,7 +32,7 @@ public class SnakeLadder extends Application {
     //Setting tiles on the Pane to make a playing board
     Pane createContent() throws FileNotFoundException {
         Pane root = new Pane();
-        root.setPrefSize(width*tileSize,height*tileSize+50);
+        root.setPrefSize(width*tileSize,height*tileSize+100);
 
         for(int i=0;i<width;i++){
             for(int j=0;j<height;j++){
@@ -56,6 +57,7 @@ public class SnakeLadder extends Application {
         playerOneButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                
                 setDiceValue();
                 firstPlayer.movePlayer(diceValue);
                 if(firstPlayer.playerWon()!=null){
@@ -79,13 +81,17 @@ public class SnakeLadder extends Application {
             }
         });
 
+        startGameButton = new Button("Start");
+        startGameButton.setTranslateX(150);
+        startGameButton.setTranslateY(lowerLine + 50);
+
         //Label for start the game and dice number
         rolledDiceValueLabel = new Label("Start the Game");
         rolledDiceValueLabel.setTranslateY(lowerLine+20);
         rolledDiceValueLabel.setTranslateX(140);
 
         root.getChildren().addAll(boardImage,playerOneButton, playerTwoButton,
-                firstPlayer.getCoin(), secondPlayer.getCoin(),rolledDiceValueLabel);
+                firstPlayer.getCoin(), secondPlayer.getCoin(),rolledDiceValueLabel,startGameButton);
         return root;
     }
 
