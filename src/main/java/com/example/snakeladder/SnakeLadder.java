@@ -58,6 +58,9 @@ public class SnakeLadder extends Application {
             public void handle(ActionEvent actionEvent) {
                 setDiceValue();
                 firstPlayer.movePlayer(diceValue);
+                if(firstPlayer.playerWon()!=null){
+                    rolledDiceValueLabel.setText(firstPlayer.playerWon());
+                }
             }
         });
 
@@ -70,6 +73,9 @@ public class SnakeLadder extends Application {
             public void handle(ActionEvent actionEvent) {
                 setDiceValue();
                 secondPlayer.movePlayer(diceValue);
+                if(secondPlayer.playerWon()!=null){
+                    rolledDiceValueLabel.setText(secondPlayer.playerWon());
+                }
             }
         });
 

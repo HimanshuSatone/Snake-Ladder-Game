@@ -39,6 +39,13 @@ public class Player {
         }
     }
 
+    public String playerWon(){
+        if(coinPosition == 100){
+            return name + "Won the game";
+        }
+        return null;
+    }
+
     public void translatePlayer(){
 
         TranslateTransition move = new TranslateTransition(Duration.millis(1000),this.coin);
