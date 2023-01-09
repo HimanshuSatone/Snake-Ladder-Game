@@ -22,6 +22,14 @@ public class Player {
         coin.setTranslateY(380);
     }
 
+    public void movePlayer(int diceValue){
+        if(coinPosition + diceValue <=100){
+            coinPosition +=diceValue;
+        }
+        coin.setTranslateX(gameBoard.getXCoordinate(coinPosition));
+        coin.setTranslateY(gameBoard.getYCoordinate(coinPosition));
+    }
+
     public Circle getCoin() {
         return coin;
     }

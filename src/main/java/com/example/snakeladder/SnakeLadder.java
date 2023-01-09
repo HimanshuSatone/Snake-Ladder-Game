@@ -1,8 +1,11 @@
 package com.example.snakeladder;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -17,10 +20,12 @@ public class SnakeLadder extends Application {
 
     public static final int tileSize = 40, height=10,width=10;
     int lowerLine = tileSize*height;
+    public int diceValue;
+    Label rolledDiceValueLabel;
 
     //Two players to play the game
-    Player firstPlayer = new Player(tileSize, Color.BLACK,"Himanshu");
-    Player secondPlayer = new Player(tileSize-10, Color.RED,"Sneha");
+    Player firstPlayer = new Player(tileSize-15, Color.BLACK,"Himanshu");
+    Player secondPlayer = new Player(tileSize-22, Color.RED,"Sneha");
 
 
     //Setting tiles on the Pane to make a playing board
@@ -44,17 +49,38 @@ public class SnakeLadder extends Application {
         boardImage.setFitWidth(tileSize*width);
         boardImage.setFitHeight(tileSize*height);
 
-        //Setting buttons for both the players in the pane
+        //Button for player1
         Button  playerOneButton = new Button("Player One");
         playerOneButton.setTranslateX(20);
         playerOneButton.setTranslateY(lowerLine+20);
+        playerOneButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                setDiceValue();
+                firstPlayer.movePlayer(diceValue);
+            }
+        });
+
+        //Button for player2
         Button  playerTwoButton = new Button("Player Two");
         playerTwoButton.setTranslateX(250);
         playerTwoButton.setTranslateY(lowerLine+20);
 
-        root.getChildren().addAll(boardImage,playerOneButton, playerTwoButton, firstPlayer.getCoin(), secondPlayer.getCoin());
+        //Label for start the game and dice number
+        rolledDiceValueLabel = new Label("Start the Game");
+        rolledDiceValueLabel.setTranslateY(lowerLine+20);
+        rolledDiceValueLabel.setTranslateX(140);
+
+        root.getChildren().addAll(boardImage,playerOneButton, playerTwoButton,
+                firstPlayer.getCoin(), secondPlayer.getCoin(),rolledDiceValueLabel);
         return root;
     }
+
+    private void setDiceValue(){
+         diceValue = (int)(Math.random()*6+1);
+         rolledDiceValueLabel.setText("Dice Value : " +diceValue);
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
         Scene scene = new Scene(createContent());
