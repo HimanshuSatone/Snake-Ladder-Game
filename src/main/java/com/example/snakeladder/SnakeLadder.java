@@ -65,6 +65,13 @@ public class SnakeLadder extends Application {
         Button  playerTwoButton = new Button("Player Two");
         playerTwoButton.setTranslateX(250);
         playerTwoButton.setTranslateY(lowerLine+20);
+        playerTwoButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                setDiceValue();
+                secondPlayer.movePlayer(diceValue);
+            }
+        });
 
         //Label for start the game and dice number
         rolledDiceValueLabel = new Label("Start the Game");
